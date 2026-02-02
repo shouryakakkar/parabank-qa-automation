@@ -156,5 +156,6 @@ newman run api-tests/parabank.postman_collection.json \
 ---
 
 ## 📌 Author
+**Shourya Kakkar**
 **QA Automation Engineer**  
 Tech Stack: Selenium | Postman | Python | Java | Jenkins | JIRA | SQL
