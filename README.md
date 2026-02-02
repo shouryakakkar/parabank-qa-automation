@@ -1,173 +1,160 @@
-ParaBank – End-to-End QA Automation Framework
-📌 Project Overview
+# ParaBank – End-to-End QA Automation Framework
 
-This project demonstrates an end-to-end QA automation framework for a banking web application (ParaBank), covering UI automation, API testing, and CI/CD integration.
-The framework validates critical banking workflows across frontend and backend layers, ensuring data consistency, reliability, and production readiness.
+![CI Status](https://img.shields.io/badge/build-passing-brightgreen)
 
-🏦 Business Domain
+## 📌 Project Overview
+This project demonstrates an **end-to-end QA automation framework** for a banking web application (ParaBank), covering **UI automation, API testing, and CI/CD integration**.  
+The framework validates critical banking workflows across **frontend and backend layers**, ensuring data consistency, reliability, and production readiness.
 
-Banking / Financial Services
+---
+
+## 🏦 Business Domain
+**Banking / Financial Services**
 
 Tested workflows simulate real-world banking operations such as:
+- User authentication
+- Account management
+- Fund transfers
+- Transaction validation
 
-User authentication
+---
 
-Account management
+## 🛠️ Tech Stack
 
-Fund transfers
+**UI Automation**
+- Selenium WebDriver
+- PyTest
+- Page Object Model (POM)
 
-Transaction validation
+**API Automation**
+- Postman
+- Newman
+- REST APIs
+- XML & JSON response handling
 
-🛠️ Tech Stack
+**CI/CD**
+- Jenkins (Pipeline-based execution)
+- HTML Test Reports
 
-UI Automation
+**Test Management & Tracking**
+- JIRA (Test cases & defect tracking)
 
-Selenium WebDriver
+**Database Validation**
+- SQL (Backend data validation using SELECT queries)
 
-PyTest
+**Other Tools**
+- Git & GitHub
+- Docker (ParaBank local setup)
 
-Page Object Model (POM)
+---
 
-API Automation
+## 🧪 Test Coverage
 
-Postman
+### UI Automation (Selenium)
+- Login (Positive & Negative Scenarios)
+- Open New Bank Account
+- Fund Transfer
+- Smoke, Sanity & Regression Test Suites
 
-Newman
+### API Automation (Postman / Newman)
+- Login API (Authentication & session handling)
+- Get Accounts API
+- Transfer Funds API
+- Backend transaction validation
 
-REST APIs
+---
 
-XML & JSON response handling
+## 📸 Screenshots
 
-CI/CD
+> 📌 *Add screenshots to visually demonstrate CI execution and reports.*
 
-Jenkins (Pipeline-based execution)
+**Suggested Screenshots:**
+- Jenkins pipeline successful build
+- UI Automation HTML Report
+- API Automation HTML Report
 
-HTML Test Reports
+```
+screenshots/
+├── jenkins-build.png
+├── ui-report.png
+└── api-report.png
+```
 
-Test Management & Tracking
+---
 
-JIRA (Test cases & defect tracking)
+## ⚙️ Project Structure
 
-Database Validation
-
-SQL (Backend data validation using SELECT queries)
-
-Other Tools
-
-Git & GitHub
-
-Docker (ParaBank local setup)
-
-🧪 Test Coverage
-UI Automation (Selenium)
-
-Login (Positive & Negative Scenarios)
-
-Open New Bank Account
-
-Fund Transfer
-
-Smoke, Sanity & Regression Test Suites
-
-API Automation (Postman / Newman)
-
-Login API (Authentication & session handling)
-
-Get Accounts API
-
-Transfer Funds API
-
-Backend transaction validation
-
-⚙️ Project Structure
+```
 parabank-qa-automation/
 ├── automation/
-│   ├── pages/               # Page Object classes
-│   ├── tests/               # PyTest test cases
-│   ├── conftest.py           # WebDriver setup
+│   ├── pages/
+│   ├── tests/
+│   ├── conftest.py
 │   └── requirements.txt
 │
 ├── api-tests/
 │   ├── parabank.postman_collection.json
 │   └── parabank_env.json
 │
-├── Jenkinsfile               # CI pipeline
+├── Jenkinsfile
+├── screenshots/
 └── README.md
+```
 
-🚀 How to Run the Project
-🔹 Prerequisites
+---
 
-Python 3.x
+## 🚀 How to Run the Project
 
-Node.js & npm
-
-Docker
-
-Jenkins
-
-Chrome Browser
-
-▶️ Start ParaBank (Docker)
+### ▶️ Start ParaBank (Docker)
+```bash
 docker run -d -p 8080:8080 parasoft/parabank
-
+```
 
 Application URL:
-
+```
 http://localhost:8080/parabank
+```
 
-▶️ Run UI Tests (Locally)
+---
+
+### ▶️ Run UI Tests (Locally)
+```bash
 pip install -r automation/requirements.txt
 pytest automation/tests --html=ui-report.html
+```
 
-▶️ Run API Tests (Locally)
+---
+
+### ▶️ Run API Tests (Locally)
+```bash
 newman run api-tests/parabank.postman_collection.json \
 -e api-tests/parabank_env.json \
 -r html --reporter-html-export api-report.html
+```
 
-🔄 CI/CD Pipeline (Jenkins)
+---
 
-Automated execution of UI and API tests
+## 🔄 CI/CD Pipeline (Jenkins)
 
-Dependency installation handled inside pipeline
+- Automated execution of **UI and API tests**
+- Dependency installation handled inside pipeline
+- HTML reports generated for each build
 
-HTML reports generated for each build
+---
 
-Pipeline Stages
+## 📊 Reports
+- UI Automation Report (`ui-report.html`)
+- API Automation Report (`api-report.html`)
 
-Code Checkout
+---
 
-Environment Setup
+## 📈 Impact
+- Reduced manual regression effort by ~60%
+- Improved test stability using explicit waits and POM
+- Early detection of integration issues via CI execution
 
-UI Automation Execution
+---
 
-API Automation Execution
-
-Report Publishing
-
-📊 Reports
-
-UI Automation Report (ui-report.html)
-
-API Automation Report (api-report.html)
-
-Reports are published automatically in Jenkins after each pipeline run.
-
-🧠 Key Highlights
-
-End-to-end validation across UI and backend layers
-
-XML response parsing and environment variable chaining
-
-SQL-based backend data validation
-
-CI-ready automation framework
-
-Banking domain-focused test scenarios
-
-📈 Impact
-
-Reduced manual regression effort by ~60%
-
-Improved test stability using explicit waits and POM
-
-Early detection of integration issues via CI execution
+## 📌 Author
+**QA Automation Engineer**  
+Tech Stack: Selenium | Postman | Python | Java | Jenkins | JIRA | SQL
