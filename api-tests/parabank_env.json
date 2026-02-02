@@ -4,19 +4,19 @@
 	"values": [
 		{
 			"key": "base_url",
-			"value": "",
+			"value": "http://localhost:8080/parabank/services/bank",
 			"type": "default",
 			"enabled": true
 		},
 		{
 			"key": "username",
-			"value": "",
+			"value": "shourya",
 			"type": "default",
 			"enabled": true
 		},
 		{
 			"key": "password",
-			"value": "",
+			"value": "Qwerty!23",
 			"type": "default",
 			"enabled": true
 		},
@@ -41,6 +41,6 @@
 	],
 	"color": null,
 	"_postman_variable_scope": "environment",
-	"_postman_exported_at": "2026-02-02T09:07:45.508Z",
+	"_postman_exported_at": "2026-02-02T10:49:36.251Z",
 	"_postman_exported_using": "Postman/11.82.6"
 }
