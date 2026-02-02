@@ -66,21 +66,16 @@ Tested workflows simulate real-world banking operations such as:
 
 ## 📸 Screenshots
 
-> 📌 *Add screenshots to visually demonstrate CI execution and reports.*
+<img width="1896" height="1079" alt="image" src="https://github.com/user-attachments/assets/816b3bb5-aeae-45a8-a07a-c23981fa7a50" />
 
-**Suggested Screenshots:**
-- Jenkins pipeline successful build
-- UI Automation HTML Report
-- API Automation HTML Report
+<img width="1919" height="1042" alt="image" src="https://github.com/user-attachments/assets/70bb158e-783f-497a-8f81-22d32aee3b79" />
 
-```
-screenshots/
-├── jenkins-build.png
-├── ui-report.png
-└── api-report.png
-```
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/9defe96c-8d29-4099-b3a4-32580d6b050f" />
 
----
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/bfffd7bc-57fa-4031-9ca9-c0aed1aad3b4" />
+
+
+
 
 ## ⚙️ Project Structure
 
