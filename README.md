@@ -66,6 +66,9 @@ Tested workflows simulate real-world banking operations such as:
 
 ## 📸 Screenshots
 
+<img width="1919" height="786" alt="image" src="https://github.com/user-attachments/assets/9d70f8ec-baa1-4490-88ce-6ceb99e764b8" />
+
+
 <img width="1896" height="1079" alt="image" src="https://github.com/user-attachments/assets/816b3bb5-aeae-45a8-a07a-c23981fa7a50" />
 
 <img width="1919" height="1042" alt="image" src="https://github.com/user-attachments/assets/70bb158e-783f-497a-8f81-22d32aee3b79" />
