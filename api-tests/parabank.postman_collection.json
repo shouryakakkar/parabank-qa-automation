@@ -1,0 +1,195 @@
+{
+  "info": {
+    "_postman_id": "03ceec5e-39e0-472f-ae45-960d4779e0ef",
+    "name": "Parabank",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51983419",
+    "_collection_link": "https://go.postman.co/collection/51983419-03ceec5e-39e0-472f-ae45-960d4779e0ef?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Login API",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "let xml = pm.response.text();\r",
+              "let jsonObj = xml2Json(xml);\r",
+              "\r",
+              "// handle both xml2Json formats\r",
+              "let customerId;\r",
+              "\r",
+              "if (typeof jsonObj.customer.id === \"object\") {\r",
+              "    customerId = jsonObj.customer.id[\"#text\"];\r",
+              "} else {\r",
+              "    customerId = jsonObj.customer.id;\r",
+              "}\r",
+              "\r",
+              "pm.test(\"Customer ID extracted\", () => {\r",
+              "    pm.expect(customerId).to.not.be.undefined;\r",
+              "    pm.expect(customerId).to.not.be.null;\r",
+              "});\r",
+              "\r",
+              "pm.environment.set(\"customerId\", customerId);\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/login/{{username}}/{{password}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "login",
+            "{{username}}",
+            "{{password}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Accounts",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "let xml = pm.response.text();\r",
+              "let jsonObj = xml2Json(xml);\r",
+              "\r",
+              "// Normalize account list (single vs multiple accounts)\r",
+              "let accounts = jsonObj.accounts.account;\r",
+              "\r",
+              "// If only one account, wrap it in array\r",
+              "if (!Array.isArray(accounts)) {\r",
+              "    accounts = [accounts];\r",
+              "}\r",
+              "\r",
+              "pm.test(\"At least 2 accounts exist\", () => {\r",
+              "    pm.expect(accounts.length).to.be.above(1);\r",
+              "});\r",
+              "\r",
+              "// Extract account IDs safely\r",
+              "let fromAccountId = accounts[0].id[\"#text\"] || accounts[0].id;\r",
+              "let toAccountId   = accounts[1].id[\"#text\"] || accounts[1].id;\r",
+              "\r",
+              "pm.environment.set(\"fromAccountId\", fromAccountId);\r",
+              "pm.environment.set(\"toAccountId\", toAccountId);\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/customers/{{customerId}}/accounts",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "customers",
+            "{{customerId}}",
+            "accounts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Transfer Funds",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Transfer request accepted\", () => {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response not empty\", () => {\r",
+              "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/transfer?fromAccountId={{fromAccountId}}&toAccountId={{toAccountId}}&amount=25",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "transfer"
+          ],
+          "query": [
+            {
+              "key": "fromAccountId",
+              "value": "{{fromAccountId}}",
+              "type": "text"
+            },
+            {
+              "key": "toAccountId",
+              "value": "{{toAccountId}}",
+              "type": "text"
+            },
+            {
+              "key": "amount",
+              "value": "25",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
